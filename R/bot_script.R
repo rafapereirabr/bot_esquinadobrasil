@@ -21,6 +21,7 @@ auth <- rtweet::rtweet_bot(api_key = api_key,
 
 auth_as(auth)
 
+message("passed twitter Authentication")
 
 ###### 1. determine tweet number sequence --------------------------------
 
@@ -35,7 +36,9 @@ pos <- temp_df$user$statuses_count
 i <- pos + 1
 
 
-###### 2. Get census tracts data --------------------------------
+###### 2. Get census tract data --------------------------------
+message("Downloading census tract data")
+
 
 # # read local data
 # temp_ct <- read_sf('./input/census_tracts_2010.gpkg',
@@ -63,6 +66,7 @@ temp_ct <- sf::st_make_valid(temp_ct)
 
 
 ###### 3. Prepare tweet --------------------------------
+message("Preparing tweet")
 
 # Google maps link
   centroid <- sf::st_centroid(temp_ct)
@@ -96,7 +100,9 @@ temp_ct <- sf::st_make_valid(temp_ct)
 
 
 ###### 4. Prepare tweet image --------------------------------
-
+message("Creating image plot")
+  
+  
 # load function
 source('./R/fun_save_image.R')
 
@@ -106,6 +112,7 @@ image_file <- save_image(temp_ct)
 
 
 ###### 5. Post tweet --------------------------------
+message("Posting tweet")
 
 # post a tweet from R
 post_tweet(status = tweet_text,

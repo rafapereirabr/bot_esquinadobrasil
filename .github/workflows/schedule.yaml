@@ -24,5 +24,6 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
             
       - name: Run bot
+        memory: 8GB
         run: Rscript R/bot_script.R
         
