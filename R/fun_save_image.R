@@ -69,16 +69,20 @@ writeLines('<GDAL_WMS>
   
   img <- gdalio_terra(virtualearth_imagery, bands = 1:3)
   # terra::plotRGB(img)
+  gc()
   
 ### mask and crop
 
   # reproject census tract
   temp_ct2 <- st_transform(temp_ct, crs= st_crs(img))
+  rm(temp_ct)
+  gc()
   
   # mask raster with census tract
   temp_plot <- terra::mask(img, temp_ct2)
   
-  rm(img); gc()
+  rm(img)
+  gc()
   
   # crop with buffer of 80 meters
   buff <- sf::st_buffer(temp_ct2, dist = 50)
