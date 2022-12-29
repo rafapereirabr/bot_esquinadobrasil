@@ -48,9 +48,9 @@ writeLines('<GDAL_WMS>
   
 ### pick dimensions (resolution)
   ct_area <- sf::st_area(temp_ct) |> as.numeric()
-  dim <- ifelse(ct_area > 5000000, 5000, 10000)
+  dim <- ifelse(ct_area > 5000000, 4000, 8000)
   
-  ext <- (max(x_dist, y_dist) * 1.05) |> round()
+  ext <- (max(x_dist, y_dist) * 1.01) |> round()
   ext <- ifelse(ext < 2000, 2000, ext)
   # ext <- ifelse(ct_area > 5000000, 2e5, 2e3)
   
@@ -77,6 +77,8 @@ writeLines('<GDAL_WMS>
   
   # mask raster with census tract
   temp_plot <- terra::mask(img, temp_ct2)
+  
+  rm(img); gc()
   
   # crop with buffer of 80 meters
   buff <- sf::st_buffer(temp_ct2, dist = 50)

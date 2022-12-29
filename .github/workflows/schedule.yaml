@@ -1,7 +1,3 @@
-stop
-
-
-
 name: test-bot
 
 on:
@@ -11,7 +7,7 @@ on:
 
 jobs:
   test-bot:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     env:
       TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
       TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
@@ -30,6 +26,5 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
             
       - name: Run bot
-      stop
         run: Rscript R/bot_script.R
         
