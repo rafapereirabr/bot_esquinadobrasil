@@ -64,7 +64,7 @@ temp_ct_table <- subset(all_cts, seq == i)
 temp_ct <- sf::st_make_valid(temp_ct)
 
 
-
+gc()
 ###### 3. Prepare tweet --------------------------------
 message("Preparing tweet")
 
@@ -103,20 +103,20 @@ message("Preparing tweet")
 message("Creating image plot")
   
   
-# load function
-source('./R/fun_save_image.R')
+# # load function
+# source('./R/fun_save_image.R')
+# 
+# # save image to temp file
+# image_file <- save_image(temp_ct)
+# 
 
-# save image to temp file
-image_file <- save_image(temp_ct)
-
-
-
+gc()
 ###### 5. Post tweet --------------------------------
 message("Posting tweet")
 
 # post a tweet from R
 post_tweet(status = tweet_text,
-           media = image_file,
+          # media = image_file,
            # media_alt_text = paste0(i),
            lat = coords[2],
            lon = coords[1],
