@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-bot:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     env:
       TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
       TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}

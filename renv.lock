@@ -134,14 +134,6 @@
       "Hash": "0eb86baa62f06e8855258fa5a8048667",
       "Requirements": []
     },
-    "data.table": {
-      "Package": "data.table",
-      "Version": "1.14.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "aecef50008ea7b57c76f1cb5c127fb02",
-      "Requirements": []
-    },
     "e1071": {
       "Package": "e1071",
       "Version": "1.7-12",
@@ -193,19 +185,6 @@
       "Requirements": [
         "memoise",
         "vapour"
-      ]
-    },
-    "geobr": {
-      "Package": "geobr",
-      "Version": "1.7.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f9ccb31c736d673f7d597d1ce9d58597",
-      "Requirements": [
-        "curl",
-        "data.table",
-        "httr",
-        "sf"
       ]
     },
     "glue": {
