@@ -1,3 +1,7 @@
+stop
+
+
+
 name: test-bot
 
 on:
@@ -24,5 +28,6 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
             
       - name: Run bot
+      stop
         run: Rscript R/bot_script.R
         
