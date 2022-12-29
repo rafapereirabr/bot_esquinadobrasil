@@ -48,7 +48,7 @@ writeLines('<GDAL_WMS>
   
 ### pick dimensions (resolution)
   ct_area <- sf::st_area(temp_ct) |> as.numeric()
-  dim <- ifelse(ct_area > 5000000, 4000, 8000)
+  dim <- ifelse(ct_area > 5000000, 4000, 9000)
   
   ext <- (max(x_dist, y_dist) * 1.01) |> round()
   ext <- ifelse(ext < 2000, 2000, ext)

@@ -78,10 +78,11 @@ message("Preparing tweet")
   code_tract <- temp_ct$code_tract
   name_muni <- temp_ct$name_muni
   abbrev_state <- temp_ct_table$abbrev_state
-  zone <- tolower(temp_ct_table$zone)
   pop_total <- temp_ct_table$pop_total
   bairro <- temp_ct$name_neighborhood
-
+  zone <- tolower(temp_ct_table$zone)
+  zone <- ifelse(zone=='urbano', 'urbana', 'rural')
+  
   tweet_text <- paste0('Municipio: ', name_muni, ' - ',abbrev_state,
                        '\nSetor censitário: ', code_tract,
                        '\nPopulação: ', pop_total,
@@ -116,8 +117,8 @@ message("Posting tweet")
 
 # post a tweet from R
 post_tweet(status = tweet_text,
-          # media = image_file,
-           # media_alt_text = paste0(i),
+           media = image_file,
+           media_alt_text = paste0(i),
            lat = coords[2],
            lon = coords[1],
            display_coordinates = TRUE)
