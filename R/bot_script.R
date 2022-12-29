@@ -103,12 +103,12 @@ message("Preparing tweet")
 message("Creating image plot")
   
   
-# # load function
-# source('./R/fun_save_image.R')
-# 
-# # save image to temp file
-# image_file <- save_image(temp_ct)
-# 
+# load function
+source('./R/fun_save_image.R')
+
+# save image to temp file
+image_file <- save_image(temp_ct)
+
 
 gc()
 ###### 5. Post tweet --------------------------------
