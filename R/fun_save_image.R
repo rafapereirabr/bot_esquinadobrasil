@@ -50,7 +50,7 @@ writeLines('<GDAL_WMS>
   ct_area <- sf::st_area(temp_ct) |> as.numeric()
   dim <- ifelse(ct_area > 5000000, 5000, 10000)
   
-  ext <- (max(x_dist, y_dist) * 1.2) |> round()
+  ext <- (max(x_dist, y_dist) * 1.05) |> round()
   ext <- ifelse(ext < 2000, 2000, ext)
   # ext <- ifelse(ct_area > 5000000, 2e5, 2e3)
   
