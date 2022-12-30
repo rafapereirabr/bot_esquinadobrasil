@@ -32,5 +32,4 @@ O bot foi escrito em R usando os seguintes pacotes / ferramentas:
 
 - [@everytract](https://twitter.com/everytract)
 - [@italiancomuni](https://twitter.com/italiancomuni)
-- [@esquinadobrasil](https://twitter.com/esquinadobrasil)
 - [@spainmunic](https://twitter.com/spainmunic)

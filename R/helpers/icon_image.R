@@ -11,19 +11,17 @@
 # 
 # ###### 2. Select area --------------------------------
 # 
-# #####  background photo
+# 
 # coords <- c(-59.96895647475754, -3.08358068688112) # manaus
+# centroid <- st_point(coords) |> st_sfc(crs = 4674)
 # 
-# 
-# 
-# ##### icon
-# 
-# # -21.129280432171427, -47.995771712675754 ### praça
-# coords <- c(-38.443445, -12.930045) ### salvador
-# coords <- c(-46.730579175981866, -23.614641038575126) ### paraisopolis - SP
-# centroid <- st_point(coords) |> st_sfc(crs = 4674) 
-# 
-# # mapview::mapview(centroid)
+#  
+# # # -21.129280432171427, -47.995771712675754 ### praça
+# # coords <- c(-38.443445, -12.930045) ### salvador
+# # coords <- c(-46.730579175981866, -23.614641038575126) ### paraisopolis - SP
+# # centroid <- st_point(coords) |> st_sfc(crs = 4674)
+# # 
+# # # mapview::mapview(centroid)
 # 
 # 
 # radius <- 500 # meters
@@ -72,7 +70,7 @@
 # 
 # ### prepare grid query
 # grid1 <- list(extent = c(-1, 1, -1, 1) * ext,
-#               dimension = c(dim, dim), 
+#               dimension = c(dim, dim),
 #               projection = my_zoom)
 # 
 # gdalio_set_default_grid(grid1)
@@ -103,8 +101,9 @@
 # r <- nrow(temp_plot) /ncol(temp_plot)
 # 
 # # save image max(nrow(temp_plot), ncol(temp_plot))
-# png('icon_2.png', res = 500,
-#     width = 10,  height = 10, units = 'cm')
+# png('./images/icon0300_08.png', res = 300,
+#     width = 8,  height = 8, units = 'cm')
 # terra::plotRGB(temp_plot)
 # dev.off()
+# 
 # 

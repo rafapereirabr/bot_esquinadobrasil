@@ -5,4 +5,5 @@
 /gdalwmscache/
 *.png
 *.gpkg
+*.pptx
 /test_images/
