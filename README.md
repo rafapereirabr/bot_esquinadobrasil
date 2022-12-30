@@ -1,8 +1,36 @@
-# todos_setores
-todos_setores
+# Twitter bot: Cada esquina do Brasil
+
+[![Passing check](https://github.com/rafapereirabr/todos_setores/actions/workflows/bot-schedule.yaml/badge.svg)](https://github.com/rafapereirabr/todos_setores/actions)
+[![versao](https://img.shields.io/badge/V.-0.1.0-yellow)](https://img.shields.io/badge/V.-0.1.0-yellow)
+
+<p align="left">
+<a href="https://twitter.com/esquinadobrasil"><img src="https://img.shields.io/badge/%40esquinadobrasil-blue?style=flat&labelColor=1DA1F2&color=1DA1F2&logo=twitter&logoColor=white" alt=“Follow me" height=22 ></a>
+</p>
+
+Twitter bot :robot: que posta imagens de satélite de todos setores censitários do Brasil. Um novo setor a cada 12 minutos. A ordem dos setores foi sorteada aleatoriamente. Bot criado por [Rafael H. M. Pereira](https://www.urbandemographics.org/about/) ([@UrbanDemog](https://twitter.com/UrbanDemog)).
+
+# Dados:
+- Setores censitários (geometria, estimativas de população e bairro): Censo Demográfico de 2010, IBGE
+- Imagens de Satélite: Microsoft VirtualEarth, via GDAL Web Map Services
 
 
 
+# Código e automação
+
+O bot foi escrito em R usando os seguintes pacotes / ferramentas:
+
+- [{geobr}](https://ipeagit.github.io/geobr/) para baixar dados de setores censitários 
+- [{gdalio}](https://github.com/hypertidy/gdalio) para baixar imagens de satélite 
+- [{sf}](https://r-spatial.github.io/sf/index.html) para operações em dados espaciais
+- [{terra}](https://rspatial.github.io/terra/index.html) para visualizar os dados 
+- [{rtweet}](https://docs.ropensci.org/rtweet/) para postagens no Twitter
+- [Github Actions](https://github.com/features/actions) para automação
 
 
-[![Passing check](https://github.com/rafapereirabr/todos_setores/actions/workflows/schedule.yaml/badge.svg)](https://github.com/rafapereirabr/todos_setores/actions)
+
+# Inspirado em outros bots:
+
+- [@everytract](https://twitter.com/everytract)
+- [@italiancomuni](https://twitter.com/italiancomuni)
+- [@esquinadobrasil](https://twitter.com/esquinadobrasil)
+- [@spainmunic](https://twitter.com/spainmunic)
