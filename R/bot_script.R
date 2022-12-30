@@ -6,6 +6,8 @@ library(remotes)
 library(gdalio)
 
 
+stop()
+
 ###### 0. Authenticate Tweeter API --------------------------------
 
 # api keys
@@ -37,8 +39,6 @@ pos <- temp_df$user$statuses_count
 # start next tweet :)
 pos <- ifelse(is.null(pos), 0, pos)
 i <- pos + 1
-
-i = 305451 # smallest
 
 ###### 2. Get census tract data --------------------------------
 message("Downloading census tract data")
