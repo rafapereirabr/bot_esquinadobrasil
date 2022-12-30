@@ -1,7 +1,9 @@
 library(sf)
 library(terra)
-library(gdalio)
 library(rtweet)
+library(remotes)
+# remotes::install_github("hypertidy/gdalio")
+library(gdalio)
 
 
 ###### 0. Authenticate Tweeter API --------------------------------

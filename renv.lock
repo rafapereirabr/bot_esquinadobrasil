@@ -231,14 +231,6 @@
       "Hash": "a4269a09a9b865579b2635c77e572374",
       "Requirements": []
     },
-    "lattice": {
-      "Package": "lattice",
-      "Version": "0.20-44",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f36bf1a849d9106dc2af72e501f9de41",
-      "Requirements": []
-    },
     "lifecycle": {
       "Package": "lifecycle",
       "Version": "1.0.3",
@@ -341,17 +333,13 @@
       "Hash": "e0ef355c12942cf7a6b91a6cfaea8b3e",
       "Requirements": []
     },
-    "raster": {
-      "Package": "raster",
-      "Version": "3.6-11",
+    "remotes": {
+      "Package": "remotes",
+      "Version": "2.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "48f95b0f7e708aa96c8913cadf12eb79",
-      "Requirements": [
-        "Rcpp",
-        "sp",
-        "terra"
-      ]
+      "Hash": "227045be9aee47e6dda9bb38ac870d67",
+      "Requirements": []
     },
     "renv": {
       "Package": "renv",
@@ -413,16 +401,6 @@
         "units"
       ]
     },
-    "sp": {
-      "Package": "sp",
-      "Version": "1.5-1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "7b6b37e9d8e3295ccd5a73ac6d62db98",
-      "Requirements": [
-        "lattice"
-      ]
-    },
     "sys": {
       "Package": "sys",
       "Version": "3.4.1",
@@ -478,14 +456,9 @@
     "vapour": {
       "Package": "vapour",
       "Version": "0.9.2",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "vapour",
-      "RemoteUsername": "hypertidy",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "da6943e495f9566e6a01665d27aa22fc591a93a1",
-      "Hash": "add6ee3297e76f1c2f44bce4be6c5026",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "014f8780c458817933ff33c587bd3b1d",
       "Requirements": [
         "Rcpp",
         "jsonlite"

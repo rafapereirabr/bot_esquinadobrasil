@@ -97,7 +97,7 @@ writeLines('<GDAL_WMS>
   image_file <- paste0(tempd, '/image.png')
   
   png(image_file, res = 500, width = 15, height = 15*r, units = 'cm') 
-  raster::plotRGB(temp_plot)
+  terra::plotRGB(temp_plot)
   dev.off()
   
   return(image_file)
