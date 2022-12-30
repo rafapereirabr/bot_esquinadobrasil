@@ -11,19 +11,26 @@ library(rtweet)
 
 ###### 2. Select area --------------------------------
 
-# background photo
-coords <- c(-59.96895647475754, -3.08358068688112) 
+#####  background photo
+coords <- c(-59.96895647475754, -3.08358068688112) # manaus
 
-# icon
 
-# -21.129280432171427, -47.995771712675754
-coords <- c(-38.443445, -12.930045) 
+
+##### icon
+
+# -21.129280432171427, -47.995771712675754 ### praça
+coords <- c(-38.443445, -12.930045) ### salvador
+coords <- c(-46.730579175981866, -23.614641038575126) ### paraisopolis - SP
 centroid <- st_point(coords) |> st_sfc(crs = 4674) 
 
 # mapview::mapview(centroid)
 
-radius <- 1000
-buff <- st_buffer(centroid, dist = radius)
+
+radius <- 500 # meters
+centroid_utm <- st_transform(centroid, crs = 3857)
+buff <- st_buffer(centroid_utm, dist = radius)
+buff <- st_transform(buff, crs = 4674)
+plot(buff)
 # mapview::mapview(centroid) + buff
 
 
@@ -41,6 +48,8 @@ writeLines('<GDAL_WMS>
 </GDAL_WMS>', virtualearth_imagery)
 
 
+
+
 ## {terra}
 gdalio_terra <- function(dsn, ..., band_output_type = "numeric") {
   v <- gdalio_data(dsn, ..., band_output_type  = band_output_type)
@@ -54,7 +63,7 @@ gdalio_terra <- function(dsn, ..., band_output_type = "numeric") {
 ### calculate area extension
 
 
-dim <- 5000
+dim <- 12000
 ext <- 2000
 
 
@@ -77,25 +86,25 @@ gc()
 
 # reproject census tract
 buff2 <- st_transform(buff, crs= st_crs(img))
+buff2 <- st_sf(buff2)
 gc()
 
 # mask raster with census tract
 temp_plot <- terra::mask(img, buff2)
 
-rm(img)
 gc()
 
 # crop with buffer of 80 meters
-buff <- sf::st_buffer(buff2, dist = 50)
-temp_plot <- terra::crop(temp_plot, buff)
+buff3 <- sf::st_buffer(buff2, dist = 50)
+temp_plot <- terra::crop(temp_plot, buff3)
 # terra::plotRGB(temp_plot)
 
 # image proportions
 r <- nrow(temp_plot) /ncol(temp_plot)
 
 # save image max(nrow(temp_plot), ncol(temp_plot))
-png(paste0('./test/', i, '.png'), res = 500,
-    width = 15,  height = 15*r, units = 'cm')
+png('icon_2.png', res = 500,
+    width = 10,  height = 10, units = 'cm')
 terra::plotRGB(temp_plot)
 dev.off()
 
