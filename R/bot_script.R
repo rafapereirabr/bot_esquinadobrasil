@@ -35,6 +35,7 @@ pos <- temp_df$user$statuses_count
 # start next tweet :)
 i <- pos + 1
 
+i = 134241 # largest
 
 ###### 2. Get census tract data --------------------------------
 message("Downloading census tract data")
