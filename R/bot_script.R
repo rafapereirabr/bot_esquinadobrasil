@@ -35,6 +35,7 @@ temp_df <- as.data.frame(last_tweet)
 pos <- temp_df$user$statuses_count
 
 # start next tweet :)
+pos <- ifelse(is.null(pos), 0, pos)
 i <- pos + 1
 
 i = 305451 # smallest
@@ -75,7 +76,12 @@ message("Preparing tweet")
   centroid <- sf::st_centroid(temp_ct)
   coords <- sf::st_coordinates(centroid)
   coords <- round(coords, 4)
-  googlemaps_link <- paste0('https://www.google.com/maps/search/?api=1&query=',coords[2],',',coords[1])
+  
+  ## https://stackoverflow.com/questions/47038116/google-maps-url-with-pushpin-and-satellite-basemap
+  # googlemaps_link <- paste0('https://www.google.com/maps/search/?api=1&query=',coords[2],',',coords[1])
+  googlemaps_link <- paste0("http://maps.google.com/maps?t=k&q=loc:",coords[2],"+",coords[1])
+  # browseURL(googlemaps_link)
+  
 
 # prepare tweet text
   code_tract <- temp_ct$code_tract
