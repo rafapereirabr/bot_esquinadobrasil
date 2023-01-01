@@ -7,7 +7,7 @@
 <a href="https://twitter.com/esquinadobrasil"><img src="https://img.shields.io/badge/%40esquinadobrasil-blue?style=flat&labelColor=1DA1F2&color=1DA1F2&logo=twitter&logoColor=white" alt=“Follow me" height=22 ></a>
 </p>
 
-Twitter bot :robot: que posta imagens de satélite de todos setores censitários do Brasil. Um novo setor a cada 12 minutos. A ordem dos setores foi sorteada aleatoriamente. Bot criado por [Rafael H. M. Pereira](https://www.urbandemographics.org/about/) ([@UrbanDemog](https://twitter.com/UrbanDemog)).
+Twitter bot :robot: que posta imagens de satélite de todos setores censitários do Brasil. Um novo setor a cada 15 minutos. A ordem dos setores foi sorteada aleatoriamente. Bot criado por [Rafael H. M. Pereira](https://www.urbandemographics.org/about/) ([@UrbanDemog](https://twitter.com/UrbanDemog)).
 
 # Dados:
 - Setores censitários (geometria, estimativas de população e bairro): Censo Demográfico de 2010, IBGE
@@ -32,4 +32,7 @@ O bot foi escrito em R usando os seguintes pacotes / ferramentas:
 
 - [@everytract](https://twitter.com/everytract)
 - [@italiancomuni](https://twitter.com/italiancomuni)
+- [@londonmapbot](https://twitter.com/londonmapbot)
 - [@spainmunic](https://twitter.com/spainmunic)
+
+

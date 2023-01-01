@@ -6,8 +6,6 @@ library(remotes)
 library(gdalio)
 
 
-stop()
-
 ###### 0. Authenticate Tweeter API --------------------------------
 
 # api keys
