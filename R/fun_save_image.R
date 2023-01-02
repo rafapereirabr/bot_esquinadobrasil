@@ -15,7 +15,7 @@ gdalio_terra <- function(dsn, ..., band_output_type = "numeric") {
 
 
 # function to save image to local temp file and return file address
-save_image <- function(temp_ct){
+save_image <- function(temp_ct, i){
 
 
 ### magick begins
@@ -48,7 +48,7 @@ writeLines('<GDAL_WMS>
   
 ### pick dimensions (resolution)
   ct_area <- sf::st_area(temp_ct) |> as.numeric()
-  dim <- ifelse(ct_area > 5000000, 5000, 10000)
+  dim <- ifelse(ct_area > 5000000, 3000, 10000)
   
   ext <- (max(x_dist, y_dist) * 1.01) |> round()
   ext <- ifelse(ext < 2000, 2000, ext)
@@ -94,9 +94,10 @@ writeLines('<GDAL_WMS>
   
   # save image to tempfile
   tempd <- tempdir()
-  image_file <- paste0(tempd, '/image.png')
+  image_file <- paste0(tempd, '/image_', i, '.png')
+  # browseURL(image_file)
   
-  png(image_file, res = 500, width = 15, height = 15*r, units = 'cm') 
+  png(image_file, res = 300, width = 15, height = 15*r, units = 'cm') 
   terra::plotRGB(temp_plot)
   dev.off()
   
