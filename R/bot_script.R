@@ -65,6 +65,10 @@ temp_ct_table <- subset(all_cts, seq == i)
 # fix eventual topoly errors
 temp_ct <- sf::st_make_valid(temp_ct)
 
+# calculate area in Km2
+area <- sf::st_area(temp_ct)
+area <- as.numeric(area)  / 1e6
+area <- round(area, 2)
 
 gc()
 ###### 3. Prepare tweet --------------------------------
@@ -80,12 +84,13 @@ message("Preparing tweet")
   googlemaps_link <- paste0("http://maps.google.com/maps?t=k&q=loc:",coords[2],"+",coords[1])
   # browseURL(googlemaps_link)
   
-
+  
+  
 # prepare tweet text
   code_tract <- temp_ct$code_tract
   name_muni <- temp_ct$name_muni
   abbrev_state <- temp_ct_table$abbrev_state
-  pop_total <- temp_ct_table$pop_total
+  pop_total <- ifelse(is.na(temp_ct_table$pop_total), 0, temp_ct_table$pop_total)
   bairro <- temp_ct$name_neighborhood
   zone <- tolower(temp_ct_table$zone)
   zone <- ifelse(zone=='urbano', 'urbana', 'rural')
@@ -93,6 +98,7 @@ message("Preparing tweet")
   tweet_text <- paste0('Municipio: ', name_muni, ' - ',abbrev_state,
                        '\nSetor censitário: ', code_tract,
                        '\nPopulação: ', pop_total,
+                       '\nÁrea: ', area, expression(" Km"^2),
                        '\nZona: ', zone, 
                        '\n\U1F5FA ', googlemaps_link) 
   
@@ -101,6 +107,7 @@ message("Preparing tweet")
                          '\nBairro: ', bairro,
                          '\nSetor censitário: ', code_tract,
                          '\nPopulação: ', pop_total,
+                         '\nÁrea: ', area, expression(" Km"^2),
                          '\nZona: ', zone, 
                          '\n\U1F5FA ', googlemaps_link)
     }
