@@ -98,7 +98,7 @@ message("Preparing tweet")
   tweet_text <- paste0('Municipio: ', name_muni, ' - ',abbrev_state,
                        '\nSetor censitário: ', code_tract,
                        '\nPopulação: ', pop_total,
-                       '\nÁrea: ', area, expression(" Km"^2),
+                       '\nÁrea (Km2): ', area,
                        '\nZona: ', zone, 
                        '\n\U1F5FA ', googlemaps_link) 
   
