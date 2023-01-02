@@ -107,7 +107,7 @@ message("Preparing tweet")
                          '\nBairro: ', bairro,
                          '\nSetor censitário: ', code_tract,
                          '\nPopulação: ', pop_total,
-                         '\nÁrea: ', area, expression(" Km"^2),
+                         '\nÁrea (Km2): ', area,
                          '\nZona: ', zone, 
                          '\n\U1F5FA ', googlemaps_link)
     }
