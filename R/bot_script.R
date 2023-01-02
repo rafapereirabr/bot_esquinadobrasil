@@ -21,7 +21,8 @@ auth <- rtweet::rtweet_bot(api_key = api_key,
                            access_token = access_token,
                            access_secret = access_secret)
 
-auth_as(auth)
+
+rtweet::auth_as(auth)
 
 message("passed twitter Authentication")
 
@@ -122,7 +123,9 @@ message("Creating image plot")
 source('./R/fun_save_image.R')
 
 # save image to temp file
-image_file <- save_image(temp_ct)
+image_file <- save_image(temp_ct, i)
+# image_file <- gsub("\\\\", "/", image_file)
+# browseURL(image_file)
 
 
 gc()
@@ -130,12 +133,12 @@ gc()
 message("Posting tweet")
 
 # post a tweet from R
-post_tweet(status = tweet_text,
-           media = image_file,
-           media_alt_text = paste0(i),
-           lat = coords[2],
-           lon = coords[1],
-           display_coordinates = TRUE)
-
-
-
+rtweet::post_tweet(
+  status = tweet_text,
+  media = image_file,
+  media_alt_text = paste0(i),
+  lat = coords[2],
+  lon = coords[1],
+  display_coordinates = TRUE,
+  token = auth
+  )
