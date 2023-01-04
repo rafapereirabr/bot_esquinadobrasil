@@ -39,6 +39,8 @@ pos <- temp_df$user$statuses_count
 pos <- ifelse(is.null(pos), 0, pos)
 i <- pos + 1
 
+
+
 ###### 2. Get census tract data --------------------------------
 message("Downloading census tract data")
 
@@ -69,7 +71,8 @@ temp_ct <- sf::st_make_valid(temp_ct)
 # calculate area in Km2
 area <- sf::st_area(temp_ct)
 area <- as.numeric(area)  / 1e6
-area <- round(area, 2)
+area2 <- round(area, 2)
+area <- ifelse(area2 != 0, area2, round(area, 3))
 
 gc()
 ###### 3. Prepare tweet --------------------------------
