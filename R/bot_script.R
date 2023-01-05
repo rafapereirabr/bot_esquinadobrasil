@@ -67,6 +67,7 @@ temp_ct_table <- subset(all_cts, seq == i)
 
 # fix eventual topoly errors
 temp_ct <- sf::st_make_valid(temp_ct)
+# plot(temp_ct)
 
 # calculate area in Km2
 area <- sf::st_area(temp_ct)
