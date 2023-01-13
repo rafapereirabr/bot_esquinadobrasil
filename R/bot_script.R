@@ -29,11 +29,16 @@ message("passed twitter Authentication")
 ###### 1. determine tweet number sequence --------------------------------
 
 # get last tweet
-last_tweet <- rtweet::get_my_timeline(n = 1, parse = F)
+# last_tweet <- rtweet::get_my_timeline(n = 1, parse = F, token = auth)
+last_tweet <- rtweet::get_timeline(user = 'esquinadobrasil', 
+                                   n= 1, 
+                                   parse = F, 
+                                   token = auth)
 
 # find number position of the last tweet
 temp_df <- as.data.frame(last_tweet)
 pos <- temp_df$user$statuses_count
+
 
 # start next tweet :)
 pos <- ifelse(is.null(pos), 0, pos)
@@ -54,6 +59,7 @@ all_cts <- readRDS('./input/table_census_tracts_2010.rds')
 
 # subset census tract
 temp_ct_table <- subset(all_cts, seq == i)
+# temp_ct_table <- subset(all_cts, code_tract == 355030877000160)
 
 # download census tract geometry data from geobr repo
   code_trct <- temp_ct_table$code_tract
@@ -65,15 +71,18 @@ temp_ct_table <- subset(all_cts, seq == i)
   temp_ct <- read_sf(ct_file,
                      query = paste0("SELECT * FROM '",code_state,"' WHERE code_tract = ", code_trct))
 
+  
+  
+  
 # fix eventual topoly errors
 temp_ct <- sf::st_make_valid(temp_ct)
 # plot(temp_ct)
 
 # calculate area in Km2
 area <- sf::st_area(temp_ct)
-area <- as.numeric(area)  / 1e6
-area2 <- round(area, 2)
-area <- ifelse(area2 != 0, area2, round(area, 3))
+areakm <- as.numeric(area)  / 1e6
+areakm_round2 <- round(areakm, 2)
+area <- ifelse(areakm_round2 != 0, areakm_round2, round(areakm, 3))
 
 gc()
 ###### 3. Prepare tweet --------------------------------
@@ -100,10 +109,16 @@ message("Preparing tweet")
   zone <- tolower(temp_ct_table$zone)
   zone <- ifelse(zone=='urbano', 'urbana', 'rural')
   
+  # densidade
+  densidade <- pop_total / areakm
+  densidade_round2 <- round(densidade, 2)
+
+    
   tweet_text <- paste0('Municipio: ', name_muni, ' - ',abbrev_state,
                        '\nSetor censitário: ', code_tract,
                        '\nPopulação: ', pop_total,
                        '\nÁrea (Km2): ', area,
+                       '\nDensidade (hab/Km2): ', densidade_round2, 
                        '\nZona: ', zone, 
                        '\n\U1F5FA ', googlemaps_link) 
   
@@ -113,6 +128,7 @@ message("Preparing tweet")
                          '\nSetor censitário: ', code_tract,
                          '\nPopulação: ', pop_total,
                          '\nÁrea (Km2): ', area,
+                         '\nDensidade (hab/Km2): ', densidade_round2, 
                          '\nZona: ', zone, 
                          '\n\U1F5FA ', googlemaps_link)
     }
