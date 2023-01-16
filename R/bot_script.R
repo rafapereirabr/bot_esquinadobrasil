@@ -26,42 +26,71 @@ rtweet::auth_as(auth)
 
 message("passed twitter Authentication")
 
+
+
+
 ###### 1. determine tweet number sequence --------------------------------
 
-# get last tweet
-# last_tweet <- rtweet::get_my_timeline(n = 1, parse = F, token = auth)
+# # via the order of the last tweet
+# last_tweet <- rtweet::get_timeline(user = 'esquinadobrasil', 
+#                                    n= 1, 
+#                                    parse = F 
+#                                   , token = auth
+#                                    )
+# 
+# # find number position of the last tweet
+# temp_df <- as.data.frame(last_tweet)
+# pos <- temp_df$user$statuses_count
+# 
+# 
+# # start next tweet :)
+# pos <- ifelse(is.null(pos), 0, pos)
+# i <- pos + 1
+# message(i)
+
+
+# via the last string in the last tweet
 last_tweet <- rtweet::get_timeline(user = 'esquinadobrasil', 
                                    n= 1, 
-                                   parse = F 
-                                  , token = auth
+                                   parse = T 
+                                   , token = auth
                                    )
 
-# find number position of the last tweet
-temp_df <- as.data.frame(last_tweet)
-pos <- temp_df$user$statuses_count
+# get text
+text <- last_tweet$full_text
 
+# remove last link
+text <- substr(text,1,nchar(text)-24)
 
-# start next tweet :)
-pos <- ifelse(is.null(pos), 0, pos)
-i <- pos + 1
+# get last word
+pos <- sub('^.* ([[:alnum:]]+)$', '\\1', text)
+i <- as.numeric(pos) + 1
 message(i)
 
 
-
-
-
+## via alt text of image
 # 
 # # parsing the tweet data
-# last_tweet_parsed <- rtweet::get_timeline(user = 'esquinadobrasil', 
-#                                           n = 1, 
+# last_tweet_parsed <- rtweet::get_timeline(user = 'esquinadobrasil',
+#                                           n = 1,
 #                                           parse = T
 #                                           )
+# last_tweet_parsed$text
 # 
+# # getting the media_alt_text
 # entities <- last_tweet_parsed$entities
 # 
 # entities[[1]]$media$ext_alt_text
+# #>[1] NA
 # 
-
+# 
+# 
+# last_tweet <- rtweet::get_timeline(user = 'esquinadobrasil', 
+#                                    n= 1, 
+#                                    parse = F
+#                                    )
+# 
+# last_tweet[[1]][[1]]$entities$media
 
 ###### 2. Get census tract data --------------------------------
 message("Downloading census tract data")
@@ -137,7 +166,7 @@ message("Preparing tweet")
                        '\nÁrea (Km2): ', area,
                        '\nDensidade (hab/Km2): ', densidade_round2, 
                        '\nZona: ', zone, 
-                       '\n\U1F5FA ', googlemaps_link) 
+                       '\n\U1F5FA ', googlemaps_link, ' ', i)
   
   if (!is.na(bairro)) {
     tweet_text <- paste0('Municipio: ', name_muni, ' - ',abbrev_state,
@@ -147,7 +176,7 @@ message("Preparing tweet")
                          '\nÁrea (Km2): ', area,
                          '\nDensidade (hab/Km2): ', densidade_round2, 
                          '\nZona: ', zone, 
-                         '\n\U1F5FA ', googlemaps_link)
+                         '\n\U1F5FA ', googlemaps_link, ' ', i)
     }
 
 
@@ -173,7 +202,7 @@ message("Posting tweet")
 rtweet::post_tweet(
   status = tweet_text,
   media = image_file,
-  media_alt_text = as.character(i),
+  media_alt_text = paste('sort', i),
   lat = coords[2],
   lon = coords[1],
   display_coordinates = TRUE,
