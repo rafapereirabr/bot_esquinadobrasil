@@ -32,8 +32,9 @@ message("passed twitter Authentication")
 # last_tweet <- rtweet::get_my_timeline(n = 1, parse = F, token = auth)
 last_tweet <- rtweet::get_timeline(user = 'esquinadobrasil', 
                                    n= 1, 
-                                   parse = F, 
-                                   token = auth)
+                                   parse = F 
+                                  , token = auth
+                                   )
 
 # find number position of the last tweet
 temp_df <- as.data.frame(last_tweet)
@@ -43,7 +44,7 @@ pos <- temp_df$user$statuses_count
 # start next tweet :)
 pos <- ifelse(is.null(pos), 0, pos)
 i <- pos + 1
-
+message(i)
 
 
 ###### 2. Get census tract data --------------------------------
