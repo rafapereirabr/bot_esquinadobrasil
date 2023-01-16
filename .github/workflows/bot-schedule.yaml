@@ -18,9 +18,6 @@ jobs:
       - name: Install macOS system dependencies
         if: runner.os == 'macOS'
         run: |
-           brew install openssl
-           brew install proj
-           brew install geos
            brew install gdal
            
       - uses: actions/checkout@v2
