@@ -47,6 +47,22 @@ i <- pos + 1
 message(i)
 
 
+
+
+
+# 
+# # parsing the tweet data
+# last_tweet_parsed <- rtweet::get_timeline(user = 'esquinadobrasil', 
+#                                           n = 1, 
+#                                           parse = T
+#                                           )
+# 
+# entities <- last_tweet_parsed$entities
+# 
+# entities[[1]]$media$ext_alt_text
+# 
+
+
 ###### 2. Get census tract data --------------------------------
 message("Downloading census tract data")
 
