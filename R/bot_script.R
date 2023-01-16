@@ -157,7 +157,7 @@ message("Posting tweet")
 rtweet::post_tweet(
   status = tweet_text,
   media = image_file,
-  media_alt_text = paste0(i),
+  media_alt_text = as.character(i),
   lat = coords[2],
   lon = coords[1],
   display_coordinates = TRUE,
