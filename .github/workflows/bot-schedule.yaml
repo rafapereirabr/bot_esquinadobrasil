@@ -7,7 +7,7 @@ on:
 
 jobs:
   bot-schedule:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     env:
       TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
       TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
