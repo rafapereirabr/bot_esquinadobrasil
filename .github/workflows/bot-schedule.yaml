@@ -7,7 +7,7 @@ on:
 
 jobs:
   bot-schedule:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
       TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache gdal and macOS system dependencies
+      - name: Cache gdal and system dependencies
         id: id_cache_gdal
         uses: actions/cache@v3
         env:
@@ -31,12 +31,13 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       
-      - name: Install gdal and macOS system dependencies
+      - name: Install gdal and system dependencies
         if: steps.id_cache_gdal.outputs.cache-hit != 'true'
         run: |
-          brew install geos
-          brew install proj
-          brew install gdal
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
