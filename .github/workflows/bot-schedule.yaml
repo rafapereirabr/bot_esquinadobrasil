@@ -7,7 +7,7 @@ on:
 
 jobs:
   bot-schedule:
-    runs-on: windows-latest
+    runs-on: macOS-latest
     env:
       TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
       TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
@@ -17,6 +17,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Cache gdal and macOS system dependencies
+        id: id_cache_gdal
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-gdal
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.chache-name }}-${{ hashFiles('**/gdal*') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.chache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      
+      - name: Install gdal and macOS system dependencies
+        if: steps.id_cache_gdal.outputs.cache-hit != 'true'
+        run: |
+          brew install geos
+          brew install proj
+          brew install gdal
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -28,4 +48,4 @@ jobs:
             
       - name: Run bot
         run: Rscript R/bot_script.R
-        
+            
