@@ -44,7 +44,9 @@ jobs:
           r-version: '4.1.1'
         
       - name: Install R Dependencies
-        uses: r-lib/actions/setup-renv@v2
+        if: steps.id_cache_gdal.outputs.cache-hit != 'true'
+        uses: |
+          r-lib/actions/setup-renv@v2
             
       - name: Run bot
         run: Rscript R/bot_script.R
