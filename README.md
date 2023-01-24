@@ -1,7 +1,7 @@
 # Twitter bot: Cada esquina do Brasil <img align="right" src="https://www.urbandemographics.org/img/package_logo/esquinadobrasil_logo.png" alt="logo" width="250">
 
 [![Passing check](https://github.com/rafapereirabr/todos_setores/actions/workflows/bot-schedule.yaml/badge.svg)](https://github.com/rafapereirabr/todos_setores/actions)
-[![versao](https://img.shields.io/badge/V.-0.1.0-yellow)](https://img.shields.io/badge/V.-0.1.0-yellow)
+[![versao](https://img.shields.io/badge/V.-0.2.0-yellow)](https://img.shields.io/badge/V.-0.2.0-yellow)
 
 <p align="left">
 <a href="https://twitter.com/esquinadobrasil"><img src="https://img.shields.io/badge/%40esquinadobrasil-blue?style=flat&labelColor=1DA1F2&color=1DA1F2&logo=twitter&logoColor=white" alt=“Follow me" height=22 ></a>
