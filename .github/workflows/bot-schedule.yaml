@@ -36,8 +36,6 @@ jobs:
         run: |
           brew install geos
           brew install proj 
-          brew install sqlite3
-          brew install libproj  
           brew install gdal
 
       - name: Setup R
