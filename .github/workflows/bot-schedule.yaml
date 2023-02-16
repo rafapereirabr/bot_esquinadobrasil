@@ -25,7 +25,7 @@ jobs:
           cache-name: cache-gdal
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.chache-name }}-${{ hashFiles('**/gdal*') }}
+          key: ${{ runner.os }}-build-${{ env.chache-name }}-${{ hashFiles('**/gdal') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.chache-name }}-
             ${{ runner.os }}-build-
@@ -35,7 +35,9 @@ jobs:
         if: steps.id_cache_gdal.outputs.cache-hit != 'true'
         run: |
           brew install geos
-          brew install proj
+          brew install proj 
+          brew install sqlite3
+          brew install libproj  
           brew install gdal
 
       - name: Setup R
