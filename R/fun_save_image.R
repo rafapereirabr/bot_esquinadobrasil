@@ -97,9 +97,10 @@ writeLines('<GDAL_WMS>
   image_file <- paste0(tempd, '/image_', i, '.png')
   # browseURL(image_file)
   
-  png(image_file, res = 300, width = 15, height = 15*r, units = 'cm') 
+  png(image_file, res = 200, width = 15, height = 15*r, units = 'cm') 
   terra::plotRGB(temp_plot)
   dev.off()
+  # Image dimensions must be >= 4x4 and <= 8192x8192 (324)
   
   return(image_file)
 }
