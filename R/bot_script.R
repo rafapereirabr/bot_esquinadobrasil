@@ -208,3 +208,6 @@ rtweet::post_tweet(
   display_coordinates = TRUE,
   token = auth
   )
+
+# error tweet numero 9023
+# Image dimensions must be >= 4x4 and <= 8192x8192 (324)
