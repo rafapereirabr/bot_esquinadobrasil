@@ -3,7 +3,7 @@ name: bot-schedule
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '*/15 * * * *'
+    - cron:  '*/30 * * * *'
 
 jobs:
   bot-schedule:
