@@ -7,7 +7,7 @@
 <a href="https://twitter.com/esquinadobrasil"><img src="https://img.shields.io/badge/%40esquinadobrasil-blue?style=flat&labelColor=1DA1F2&color=1DA1F2&logo=twitter&logoColor=white" alt=“Follow me" height=22 ></a>
 </p>
 
-Twitter bot :robot: que posta imagens de satélite de todos setores censitários do Brasil. Um novo setor a cada 15 minutos. A ordem dos setores foi sorteada aleatoriamente. O objetivo com esse bot é ~procrastinar~  levar as pessoas a "visitar" cada esquina desse imenso Brasil, em toda sua beleza e também desigualdade. O propósito também é educacional para despertar a curiosidade e interesse sobre ciências de dados espaciais e programação em R.
+Twitter bot :robot: que posta imagens de satélite de todos setores censitários do Brasil. Um novo setor a cada 30 minutos. A ordem dos setores foi sorteada aleatoriamente. O objetivo com esse bot é ~procrastinar~  levar as pessoas a "visitar" cada esquina desse imenso Brasil, em toda sua beleza e também desigualdade. O propósito também é educacional para despertar a curiosidade e interesse sobre ciências de dados espaciais e programação em R.
 
 Bot criado por [Rafael H. M. Pereira](https://www.urbandemographics.org/about/) ([@UrbanDemog](https://twitter.com/UrbanDemog)).
 
